@@ -54,7 +54,7 @@ var mJson;
 
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = 'insert_url_here_to_image_json';
+var mUrl = 'images.json';
 
 
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
@@ -79,8 +79,12 @@ window.addEventListener('load', function() {
 
 }, false);
 
-function GalleryImage() {
+function GalleryImage(path, location, description, date) {
 	//implement me as an object to hold the following data about an image:
+	this.imgPath = path;
+	this.imgLocation = location;
+	this.description = description;
+	this.date = date;
 	//1. location where photo was taken
 	//2. description of photo
 	//3. the date when the photo was taken
