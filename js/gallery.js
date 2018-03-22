@@ -43,22 +43,53 @@ function swapPhoto() {
 // Counter for the mImages array
 var mCurrentIndex = 0;
 
-// XMLHttpRequest variable
-var mRequest = new XMLHttpRequest();
-mRequest.open("GET", "images.json");
-mRequest.send();
-
-console.log(mRequest);
-
 // Array holding GalleryImage objects (see below).
 var mImages = [];
 
-// Holds the retrived JSON information
+// Holds the retrieved JSON information
 var mJson;
+
 
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
 var mUrl = 'images.json';
+
+// XMLHttpRequest variable
+var mRequest = new XMLHttpRequest();
+mRequest.open("GET", mUrl);
+
+mRequest.onreadystatechange = function() {
+        if (mRequest.readyState == 4 && mRequest.status == 200) {
+            //console.log(‘responseText:’ + mRequest.responseText); // This helps you check if the JSON is input
+            try {
+                mJson = JSON.parse(mRequest.responseText); // This converts the JSON object into a JS object.
+
+               // this for loop makes sure to go through each image in the JSON file
+                for (var i = 0; i < mJson.images.length; i++) {
+	                
+                               // create a temporary variable holding all the image data for one line
+		        	var myLine = mJson.images[i];
+                              // add a new GalleryImage object into the mImages array which is defined outside this function.
+		        	mImages.push(new GalleryImage(myLine.imgPath, myLine.imgLocation, myLine.description, myLine.date));
+		        	
+		        	//console.log(mImages)
+		    	}
+		    	console.log(mImages)
+
+            } catch(err) {
+               // this code runs if there’s an error parsing the JSON data. 
+                console.log(err.message + " in " + mRequest.responseText);
+                return;
+            }
+        }
+    };
+
+mRequest.send();
+
+
+console.log(mImages)
+
+
 
 
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
