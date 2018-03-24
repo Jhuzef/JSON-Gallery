@@ -22,6 +22,7 @@ body {
 	position: relative;
 	width: 80%;
 	margin: 0 auto;
+
 }
 
 .moreIndicator {
@@ -35,6 +36,11 @@ body {
 
 .thumbnail {
 	position: relative;
+	display: block;
+  	max-width:518px;
+  	max-height:389px;
+  	width: 518px;
+  	height: 389px;
 	box-shadow: 1px 3px 20px 0px;
 }
 
