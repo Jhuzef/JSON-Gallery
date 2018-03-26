@@ -67,6 +67,14 @@ body {
 	position: relative;
 }
 
+#nextPhoto:hover {
+	opacity : .8;
+}
+
+#prevPhoto:hover {
+	opacity: .8;
+}
+
 #prevPhoto {
 	height: 42px;
 	width: 42px;

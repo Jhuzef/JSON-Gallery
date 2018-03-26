@@ -130,6 +130,8 @@ $(document).ready( function() {
 		}
 
 	});
+
+	$('#nextPhoto').offset({left: 690 });
 	
 });
 
