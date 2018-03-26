@@ -40,7 +40,12 @@ var mImages = [];
 
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = 'images.json';
+//if ($.get('localhost', 'json')) {
+//	var mUrl = $.get('localhost', 'json');
+//}
+//else {
+	var mUrl = 'images.json';
+//}
 
 function swapPhoto() {
 	//Add code here to access the #slideShow element.
@@ -52,7 +57,10 @@ function swapPhoto() {
 	if (mCurrentIndex == mImages.length) {
 		mCurrentIndex = 0;
 	}
-	currSlide.attr('src', mImages[mCurrentIndex].imgPath);
+	$(currSlide).fadeOut(500, function () {
+		currSlide.attr('src', mImages[mCurrentIndex].imgPath).fadeIn(500);
+	});
+	
 	$('.location').text('Location: ' + mImages[mCurrentIndex].imgLocation);
 	$('.description').text('Description: ' + mImages[mCurrentIndex].description);
 	$('.date').text('Date: ' + mImages[mCurrentIndex].date);
@@ -81,7 +89,6 @@ mRequest.onreadystatechange = function() {
 		        	
 		        	//console.log(mImages)
 		    	}
-		    	console.log(mImages)
 
             } catch(err) {
                // this code runs if there’s an error parsing the JSON data. 
@@ -92,10 +99,6 @@ mRequest.onreadystatechange = function() {
     };
 
 mRequest.send();
-
-
-console.log(mImages)
-
 
 
 
@@ -131,7 +134,6 @@ $(document).ready( function() {
 	
 	$('#nextPhoto').click( function() {
 			mLastFrameTime = 0;
-			console.log(mCurrentIndex);
 			swapPhoto();
 	});
 
@@ -141,14 +143,12 @@ $(document).ready( function() {
 
 			if(mCurrentIndex == 0) {
 				mCurrentIndex = mImages.length -2;
-				console.log(mCurrentIndex);
 			}
 			else {
 				mCurrentIndex = mCurrentIndex -2;
 				if (mCurrentIndex < 0) {
 					mCurrentIndex = -1;
 				}
-				console.log(mCurrentIndex);
 			}
 			swapPhoto();
 	});
