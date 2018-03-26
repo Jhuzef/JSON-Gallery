@@ -49,12 +49,16 @@ function swapPhoto() {
 	//Access the img element and replace its source
 	//with a new image from your images array which is loaded 
 	//from the JSON string
-	currSlide.attr('src', mImages[mCurrentIndex].imgPath);
 	mCurrentIndex++;
 
 	if (mCurrentIndex == mImages.length) {
 		mCurrentIndex = 0;
 	}
+	currSlide.attr('src', mImages[mCurrentIndex].imgPath);
+	$('.location').text('Location: ' + mImages[mCurrentIndex].imgLocation);
+	$('.description').text('Description: ' + mImages[mCurrentIndex].description);
+	$('.date').text('Date: ' + mImages[mCurrentIndex].date);
+	
 
 	console.log('swap photo');
 }
@@ -112,6 +116,20 @@ $(document).ready( function() {
 	
 	// This initially hides the photos' metadata information
 	$('.details').eq(0).hide();
+	$('.moreIndicator').click( function() {
+		
+		if ($(this).hasClass('rot270')) {
+			$(this).removeClass('rot270');
+			$(this).addClass('rot90');
+			$('.details').eq(0).hide(800);
+		}
+		else {
+			$(this).removeClass('rot90');
+			$(this).addClass('rot270');
+			$('.details').eq(0).show(800);
+		}
+
+	});
 	
 });
 

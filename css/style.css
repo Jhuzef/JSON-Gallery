@@ -45,18 +45,6 @@ body {
 	transition: all 1s ease;
 }
 
-.moreIndicator:hover {
-	opacity: 1;
-	/* Firefox */
-	-moz-transform: scale(1) rotate(30deg) translate(0px);
-	/* WebKit */
-	-webkit-transform: scale(1) rotate(30deg) translate(0px);
-	/* Opera */
-	-o-transform: scale(1) rotate(30deg) translate(0px);
-	/* Standard */
-	transform: scale(1) rotate(30deg) translate(0px);
-	z-index: 1000;
-}
 
 .thumbnail {
 	position: relative;
@@ -111,7 +99,13 @@ Make it animate nicely. You'll need CSS3 for this*/
 
 /*Add CSS styles to rotate the element 180deg
 Make it animate nicely. You'll need CSS3 for this*/
-.rot180 {}
+.rot180 {
+	-webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg)
+}
 
 /*Add CSS styles to rotate the element 270deg
 Make it animate nicely. You'll need CSS3 for this*/
