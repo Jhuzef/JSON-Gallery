@@ -45,12 +45,10 @@ var mUrl = 'images.json';
 function swapPhoto() {
 	//Add code here to access the #slideShow element.
 	var currSlide = $("#photo");
-	console.log(mImages[mCurrentIndex].imgPath)
 	//Access the img element and replace its source
 	//with a new image from your images array which is loaded 
 	//from the JSON string
 	mCurrentIndex++;
-
 	if (mCurrentIndex == mImages.length) {
 		mCurrentIndex = 0;
 	}
@@ -59,8 +57,6 @@ function swapPhoto() {
 	$('.description').text('Description: ' + mImages[mCurrentIndex].description);
 	$('.date').text('Date: ' + mImages[mCurrentIndex].date);
 	
-
-	console.log('swap photo');
 }
 
 
@@ -133,6 +129,29 @@ $(document).ready( function() {
 
 	$('#nextPhoto').offset({left: 690 });
 	
+	$('#nextPhoto').click( function() {
+			mLastFrameTime = 0;
+			console.log(mCurrentIndex);
+			swapPhoto();
+	});
+
+	$('#prevPhoto').click( function() {
+			mLastFrameTime = 0;
+			
+
+			if(mCurrentIndex == 0) {
+				mCurrentIndex = mImages.length -2;
+				console.log(mCurrentIndex);
+			}
+			else {
+				mCurrentIndex = mCurrentIndex -2;
+				if (mCurrentIndex < 0) {
+					mCurrentIndex = -1;
+				}
+				console.log(mCurrentIndex);
+			}
+			swapPhoto();
+	});
 });
 
 window.addEventListener('load', function() {
