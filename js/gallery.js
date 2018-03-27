@@ -38,14 +38,29 @@ var mCurrentIndex = 0;
 // Array holding GalleryImage objects (see below).
 var mImages = [];
 
+
+function getQueryParams(qs) {
+	 qs = qs.split("+").join(" ");
+ 	var params = {},
+ 	tokens,
+ 	re = /[?&]?([^=]+)=([^&]*)/g;
+ 	while (tokens = re.exec(qs)) {
+ 		params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+ 	}
+ 	return params;
+}
+var $_GET = getQueryParams(document.location.search);
+
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-//if ($.get('localhost', 'json')) {
-//	var mUrl = $.get('localhost', 'json');
-//}
-//else {
-	var mUrl = 'images.json';
-//}
+	
+	if (typeof $_GET['json']!== 'undefined') {
+		var mUrl = $_GET['json'];
+	}
+	else {
+		var mUrl = 'images.json';
+	}
+
 
 function swapPhoto() {
 	//Add code here to access the #slideShow element.
