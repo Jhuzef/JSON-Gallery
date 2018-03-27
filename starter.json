@@ -1,0 +1,22 @@
+{
+    "images": [
+        {
+            "imgPath": "/img/pokemon/Charmander.png",
+            "imgLocation": "Kanto Region",
+            "description": "This is a Charmander.",
+            "date": "01/01/2016"
+        },
+        {
+            "imgPath": "/img/pokemon/Squirtle.png",
+            "imgLocation": "Kanto Region",
+            "description": "This is a Squirtle.",
+            "date": "02/01/2016"
+        },
+        {
+            "imgPath": "/img/pokemon/Bulbasaur.png",
+            "imgLocation": "Kanto Region",
+            "description": "This is a Bulbasaur.",
+            "date": "03/01/2016"
+        }
+  ]
+}
