@@ -1,4 +1,3 @@
-// requestAnim shim layer by Paul Irish
     window.requestAnimFrame = (function(){
       return  window.requestAnimationFrame       || 
               window.webkitRequestAnimationFrame || 
@@ -30,7 +29,6 @@ function animate() {
 	}
 }
 
-/************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 
 // Counter for the mImages array
 var mCurrentIndex = 0;
@@ -63,11 +61,7 @@ var $_GET = getQueryParams(document.location.search);
 
 
 function swapPhoto() {
-	//Add code here to access the #slideShow element.
 	var currSlide = $("#photo");
-	//Access the img element and replace its source
-	//with a new image from your images array which is loaded 
-	//from the JSON string
 	mCurrentIndex++;
 	if (mCurrentIndex == mImages.length) {
 		mCurrentIndex = 0;
@@ -84,7 +78,6 @@ function swapPhoto() {
 
 
 
-// XMLHttpRequest variable
 var mRequest = new XMLHttpRequest();
 mRequest.open("GET", mUrl);
 
@@ -97,12 +90,9 @@ mRequest.onreadystatechange = function() {
                // this for loop makes sure to go through each image in the JSON file
                 for (var i = 0; i < mJson.images.length; i++) {
 	                
-                               // create a temporary variable holding all the image data for one line
 		        	var myLine = mJson.images[i];
-                              // add a new GalleryImage object into the mImages array which is defined outside this function.
 		        	mImages.push(new GalleryImage(myLine.imgPath, myLine.imgLocation, myLine.description, myLine.date));
 		        	
-		        	//console.log(mImages)
 		    	}
 
             } catch(err) {
@@ -117,8 +107,6 @@ mRequest.send();
 
 
 
-//You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
-//@param A GalleryImage object. Use this method for an event handler for loading a gallery Image object (optional).
 function makeGalleryImageOnloadCallback(galleryImage) {
 	return function(e) {
 		galleryImage.img = e.target;
@@ -144,8 +132,6 @@ $(document).ready( function() {
 		}
 
 	});
-
-	$('#nextPhoto').offset({left: 690 });
 	
 	$('#nextPhoto').click( function() {
 			mLastFrameTime = 0;
